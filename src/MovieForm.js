@@ -7,7 +7,7 @@ export default class MovieForm extends Component {
 
   render() {
     const { submitForm } = this.props,
-                    text = this.state;
+                { text } = this.state;
 
     return (
       <div>
@@ -15,7 +15,14 @@ export default class MovieForm extends Component {
           data-testid="movie-form"
           onSubmit={ () => submitForm({ text }) }
         >
-          <input type="text" />
+          <label htmlFor="text">
+            Text
+            <input
+              type="text"
+              id="text"
+              onChange={ e => this.setState({ text: e.target.value }) }
+            />
+          </label>
           <button>
             Submit
           </button>
