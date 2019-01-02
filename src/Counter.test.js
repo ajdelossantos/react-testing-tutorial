@@ -6,28 +6,24 @@ import {
 } from 'react-testing-library';
 import Counter from './Counter';
 
-describe('Counter', () => {
+test('<Counter />', () => {
+
+  afterEach(cleanup)
+
   const { debug, getByTestId } = render(<Counter />),
                  counterButton = getByTestId('counter-button');
 
-  // debug(); // comment in if debug needed
+  // debug();
 
-  // afterEach(cleanup);
-
-  test('is a button', () => {
     expect(counterButton.tagName).toBe('BUTTON');
-  });
-  
-  test('count initializes to zero ', () => {
-    expect(counterButton.textContent).toBe('0');
-  });
 
-  test('clicking the button increments the count', () => {
+    expect(counterButton.textContent).toBe('0');
+
+
     fireEvent.click(counterButton);
     expect(counterButton.textContent).toBe('1');
-
     fireEvent.click(counterButton);
     expect(counterButton.textContent).toBe('2');
-  });
+
 
 });
